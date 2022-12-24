@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.main`
-  background-color: #f5f6f7;
   width: 100%;
   height: 100%;
   display: grid;
@@ -16,7 +15,7 @@ export const Wrapper = styled.main`
   color: white;
 `
 
-export const InfoContent = styled.article`
+export const InfoContent = styled.section`
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -24,16 +23,35 @@ export const InfoContent = styled.article`
   align-items: center;
 `
 
-export const FormContent = styled.article`
-  background-color: #f5f6f7;
+export const FormContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
   -webkit-box-shadow: -12px 0px 10px 0px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: -12px 0px 10px 0px rgba(0, 0, 0, 0.18);
   box-shadow: -12px 0px 10px 0px rgba(0, 0, 0, 0.18);
 `
 
+export const Container = styled.article`
+  width: 50%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const Logo = styled.img`
-  width: 25rem;
+  width: 75px;
   margin-bottom: 2rem;
+  border-radius: 50%;
+  border: 1px solid #e7ecf4;
+  padding: 8px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 `
 export const Title = styled.h1`
   font-size: 2.5rem;
@@ -43,6 +61,5 @@ export const Description = styled.h3`
   font-weight: 400;
 `
 export const Illustration = styled.img`
-  margin-top: 3rem;
-  width: 60%;
+  width: 80%;
 `
