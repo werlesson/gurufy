@@ -22,6 +22,8 @@ function App({
 }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const layout = getLayout(<Component {...pageProps} />)
 
   return (
