@@ -17,6 +17,8 @@ export default class MyDocument extends Document {
         originalRenderPage({
           enhanceApp: (App) =>
             function enhance(props) {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
               return sheet.collectStyles(<App {...props} />)
             }
         })
