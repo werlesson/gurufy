@@ -9,6 +9,8 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: 'credentials',
       credentials: {},
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       authorize(credentials) {
         const { email, password } = credentials as {
           email: string
