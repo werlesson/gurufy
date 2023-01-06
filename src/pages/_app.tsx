@@ -4,7 +4,26 @@ import Head from 'next/head'
 import GlobalStyles from 'styles/global'
 import 'antd/dist/reset.css'
 
-function App({ Component, pageProps }: AppProps) {
+import { SessionProvider } from 'next-auth/react'
+import { NextPage } from 'next'
+import { ReactElement, ReactNode } from 'react'
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function App({
+  Component,
+  pageProps: { session, ...pageProps }
+}: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  const layout = getLayout(<Component {...pageProps} />)
+
   return (
     <>
       <Head>
@@ -19,7 +38,7 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <SessionProvider session={session}>{layout}</SessionProvider>
     </>
   )
 }

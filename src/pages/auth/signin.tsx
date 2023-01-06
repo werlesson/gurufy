@@ -1,15 +1,25 @@
 import { Button, Form, Input, Typography } from 'antd'
 import * as S from './styles'
+import { signIn } from 'next-auth/react'
+import { FormEventHandler, useState } from 'react'
 
 const { Title, Text } = Typography
 
 export default function Signin() {
-  const onFinish = (values: unknown) => {
-    console.log('Success:', values)
-  }
+  const [userInfo, setUserInfo] = useState({ email: '', password: '' })
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    // validate your userinfo
+    // e.preventDefault()
 
-  const onFinishFailed = (errorInfo: unknown) => {
-    console.log('Failed:', errorInfo)
+    console.log('E', e)
+
+    const res = await signIn('credentials', {
+      email: userInfo.email,
+      password: userInfo.password,
+      redirect: false
+    })
+
+    console.log(res)
   }
 
   return (
@@ -30,21 +40,27 @@ export default function Signin() {
           >
             Por favor, insira seu e-mail e senha
           </Text>
+          {/* onFinish={onFinish}
+          onFinishFailed={onFinishFailed} */}
           <Form
             name="basic"
             initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             layout="vertical"
             style={{ width: '100%' }}
+            onFinish={handleSubmit}
           >
             <Form.Item
               label="E-mail"
               name="username"
               rules={[{ message: 'Please input your username!' }]}
             >
-              <Input />
+              <Input
+                value={userInfo.email}
+                onChange={({ target }) =>
+                  setUserInfo({ ...userInfo, email: target.value })
+                }
+              />
             </Form.Item>
 
             <Form.Item
@@ -52,7 +68,12 @@ export default function Signin() {
               name="password"
               rules={[{ message: 'Please input your password!' }]}
             >
-              <Input.Password />
+              <Input.Password
+                value={userInfo.password}
+                onChange={({ target }) =>
+                  setUserInfo({ ...userInfo, password: target.value })
+                }
+              />
             </Form.Item>
 
             <Form.Item>

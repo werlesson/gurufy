@@ -1,15 +1,17 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withPWA = require('next-pwa')
-const isProd = process.env.NODE_ENV === 'production'
-
-module.exports = withPWA({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    // Enables the styled-components SWC transform
-    styledComponents: true
-  },
-  pwa: {
-    dest: 'public',
-    disable: !isProd
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'svg-react-loader'
+      }
+    })
+    return config
   }
-})
+}
+
+module.exports = nextConfig
