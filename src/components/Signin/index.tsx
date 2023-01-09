@@ -2,16 +2,15 @@ import { Button, Form, Input, Typography } from 'antd'
 import * as S from './styles'
 import { signIn } from 'next-auth/react'
 import { FormEventHandler, useState } from 'react'
+import Router from 'next/router'
 
 const { Title, Text } = Typography
 
 export default function Signin() {
   const [userInfo, setUserInfo] = useState({ email: '', password: '' })
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async () => {
     // validate your userinfo
     // e.preventDefault()
-
-    console.log('E', e)
 
     const res = await signIn('credentials', {
       email: userInfo.email,
@@ -19,7 +18,9 @@ export default function Signin() {
       redirect: false
     })
 
-    console.log(res)
+    if (res?.ok) {
+      Router.push('/')
+    }
   }
 
   return (
