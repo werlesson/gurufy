@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { HomeOutlined, NotificationOutlined } from '@ant-design/icons'
 
 import * as S from './styles'
@@ -9,11 +9,6 @@ export default function Sider() {
   const router = useRouter()
 
   const [collapsed, setCollapsed] = useState(true)
-  const [pathname, setPathname] = useState('/')
-
-  useEffect(() => {
-    setPathname(router.pathname)
-  }, [router])
 
   const items: MenuProps['items'] = [
     {
@@ -24,7 +19,7 @@ export default function Sider() {
     },
     {
       label: 'Insights do Guru',
-      key: 'notifications',
+      key: '/notifications',
       icon: <NotificationOutlined />,
       onClick: () => router.push('/notifications')
     }
@@ -40,7 +35,7 @@ export default function Sider() {
       <S.SideMenuItems
         items={items}
         theme="dark"
-        defaultSelectedKeys={[pathname]}
+        defaultSelectedKeys={[router.pathname]}
         mode="inline"
       />
     </S.SideMenu>
