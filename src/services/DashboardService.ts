@@ -1,7 +1,18 @@
-import { AxiosAuthenticated } from './AxiosConfig'
+import { Service } from './Service'
 
-export const getDashboard = async () => {
-  return await AxiosAuthenticated.get('/dashboard/')
-    .then((res) => res.data)
-    .catch((e) => console.error(e))
+interface IDashboard {
+  clientes_unicos: number
+  total_vendas: number
+  tempo_recompra: number
+  faturamento_total: number
+  ticket_medio: number
+  frequencia_media: number
+  novos_clientes: number
+  crescimento_clientes: number
 }
+
+class DashboardService extends Service<IDashboard> {
+  path = 'dashboard'
+}
+
+export { DashboardService }

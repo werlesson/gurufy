@@ -2,12 +2,13 @@ import { Card, Typography } from 'antd'
 import styled from 'styled-components'
 const { Title } = Typography
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.section`
   // background: radial-gradient(
   //   circle,
   //   rgba(249, 252, 242, 1) 0%,
   //   rgba(231, 239, 253, 1) 100%
   // );
+  padding: 2rem 16px 0 16px;
   width: 100%;
   height: 100%;
   // padding: 3rem;
@@ -20,6 +21,7 @@ export const Wrapper = styled.main`
 
 export const Content = styled(Card)`
   min-height: calc(100% - 40px);
+  box-shadow: rgba(149,157,165,0.2) 0px 8px 24px; !important;
 `
 
 export const Header = styled.header`
@@ -28,4 +30,6 @@ export const Header = styled.header`
   align-items: center;
 `
 
-export const TitlePage = styled(Title)``
+export const TitlePage = styled(Title)`
+  margin-bottom: 2rem !important;
+`

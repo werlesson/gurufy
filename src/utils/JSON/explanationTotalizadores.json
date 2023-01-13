@@ -1,0 +1,10 @@
+{
+  "quantidadeClientesUnicos": "Número de clientes que compraram conosco no período selecionado, desconsiderando as repetições e contando cada ID como único",
+  "numeroAbsolutoVendas": "Quantidade de vendas realizadas no período selecionado",
+  "tempoMedioRecompraMeses": "Tempo médio em meses entre compras dos clientes ativos na base",
+  "valorTotalVendas": "Soma do valor acumulado de vendas no período",
+  "ticketMedio": "Valor médio das vendas realizadas",
+  "frequenciaComprasCliente": "Quantidade de compras realizadas em média por cliente",
+  "novosClientes": "Quantidade de novos clientes que realizaram compras no último mês",
+  "crescimentoBaseClientes": "Percentual de crescimento da base de clientes considerando os novos entrantes no último mês"
+}

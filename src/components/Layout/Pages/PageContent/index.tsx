@@ -5,9 +5,15 @@ interface Props {
   title?: string
   children?: React.ReactNode
   breadcrumb?: Array<string>
+  withoutContent?: boolean
 }
 
-const PageContent = ({ children, title, breadcrumb }: Props) => {
+const PageContent = ({
+  children,
+  title,
+  breadcrumb,
+  withoutContent = false
+}: Props) => {
   return (
     <S.Wrapper>
       <S.Header>
@@ -18,7 +24,11 @@ const PageContent = ({ children, title, breadcrumb }: Props) => {
           ))}
         </Breadcrumb>
       </S.Header>
-      <S.Content>{children}</S.Content>
+      {withoutContent ? (
+        children
+      ) : (
+        <S.Content bordered={false}>{children}</S.Content>
+      )}
     </S.Wrapper>
   )
 }

@@ -1,5 +1,5 @@
 import MainLayout from 'components/Layout/MainLayout'
-import PageContent from 'components/PageContent'
+import PageContent from 'components/Layout/Pages/PageContent'
 
 export default function Home() {
   return (

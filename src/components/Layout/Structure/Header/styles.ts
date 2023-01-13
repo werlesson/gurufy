@@ -10,4 +10,5 @@ export const HeaderPage = styled(Header)`
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
+  box-shadow: rgba(149,157,165,0.2) 0px 2px 16px; !important;
 `

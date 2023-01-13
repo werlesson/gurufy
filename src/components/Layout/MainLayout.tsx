@@ -3,9 +3,9 @@ import { Layout } from 'antd'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import LoadingPage from 'components/LoadingPage'
-import Sider from './Sider'
-import Header from './Header'
-import Footer from './Footer'
+import Footer from './Structure/Footer'
+import Sider from './Structure/Sider'
+import Header from './Structure/Header'
 
 const { Content } = Layout
 
@@ -27,9 +27,7 @@ export default function MainLayout({ children }: Props) {
         <Sider />
         <Layout className="site-layout">
           <Header />
-          <Content style={{ paddingTop: '2rem', margin: '0 16px' }}>
-            {children}
-          </Content>
+          <Content>{children}</Content>
           <Footer />
         </Layout>
       </Layout>

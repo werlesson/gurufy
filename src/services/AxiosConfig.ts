@@ -29,7 +29,7 @@ AxiosAuthenticated.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response.status === 401) {
-      // window.location.href = '/auth/signin'
+      window.location.href = '/auth/signin'
     }
     return Promise.reject(error)
   }
