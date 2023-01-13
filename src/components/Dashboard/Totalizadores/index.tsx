@@ -9,9 +9,10 @@ interface Items {
 
 interface Props {
   items: Array<Items>
+  loading: boolean
 }
 
-export default function Totalizadores({ items }: Props) {
+export default function Totalizadores({ items, loading }: Props) {
   return (
     <S.Totalizadores>
       {items.map((item, index) => (
@@ -20,6 +21,7 @@ export default function Totalizadores({ items }: Props) {
           info={item.info}
           value={item.value}
           description={item.text}
+          loading={loading}
         />
       ))}
     </S.Totalizadores>

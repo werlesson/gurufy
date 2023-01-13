@@ -33,8 +33,10 @@ export default function Home() {
 
   const [dashboard, setDashboard] = useState<IDashboard>()
   const [totalizadoresData, setTotalizadoresData] = useState<Array<Items>>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
+    setLoading(true)
     Service.get()
       .then((response) => {
         const { data } = response
@@ -43,7 +45,11 @@ export default function Home() {
       .catch((error) => {
         console.log(error)
       })
-  })
+      .finally(() => {
+        setLoading(false)
+      })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     setTotalizadoresData([
@@ -92,7 +98,7 @@ export default function Home() {
 
   return (
     <PageContent title="Insight Sales" withoutContent={true}>
-      <Totalizadores items={totalizadoresData} />
+      <Totalizadores items={totalizadoresData} loading={loading} />
     </PageContent>
   )
 }
