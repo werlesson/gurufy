@@ -1,18 +1,8 @@
 import CardStatistic from 'components/General/CardStatistic'
+import { TotalizadoresProps } from 'models/PropsComponents'
 import * as S from './styles'
 
-interface Items {
-  value: number | string
-  text: string
-  info?: string
-}
-
-interface Props {
-  items: Array<Items>
-  loading: boolean
-}
-
-export default function Totalizadores({ items, loading }: Props) {
+export default function Totalizadores({ items, loading }: TotalizadoresProps) {
   return (
     <S.Totalizadores>
       {items.map((item, index) => (

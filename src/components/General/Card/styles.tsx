@@ -1,7 +1,11 @@
 import { Card as CardAntd, Tooltip } from 'antd'
 import styled from 'styled-components'
 
-export const Card = styled(CardAntd)``
+export const Card = styled(CardAntd)`
+  &.with-shadow {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 16px !important;
+  }
+`
 
 export const CardHeader = styled.article`
   position: relative;

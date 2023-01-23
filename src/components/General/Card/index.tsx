@@ -9,11 +9,18 @@ interface Props {
   title?: string
   info?: string
   className?: string
+  withShadow?: boolean
 }
 
-export default function Card({ children, title, info, className }: Props) {
+export default function Card({
+  children,
+  title,
+  info,
+  className,
+  withShadow
+}: Props) {
   return (
-    <S.Card className={className}>
+    <S.Card className={withShadow ? `${className} with-shadow` : className}>
       <S.CardHeader>
         {title && <Title level={5}>{title}</Title>}
         {info && (
